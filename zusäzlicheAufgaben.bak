@@ -1,0 +1,63 @@
+#lang racket
+;Aufgabe Frühzahlungsrabatt 
+(define (early-discount betrag days)
+  (cond ((<= days 7) (- betrag (* betrag 0.05)))
+        ((and (> days 7) (<= days 14)) (- betrag (* betrag 0.03)))
+        ((and (> days 14) (<= days 21)) (- betrag (* betrag 0.01)))
+        (else betrag)))
+
+(early-discount 200 6) 
+(early-discount 150 20)
+(early-discount 100 30)
+
+; Aufgabe Parkgebühr
+
+(define (parking-fee stunden)
+  (cond ((<= stunden 1) 0)
+        ((and (> stunden 1) (<= stunden 4))(* stunden 2))
+        ((> stunden 4)
+         (if (> (* 3 stunden) 20) 20 (* 3 stunden)))))
+        
+(parking-fee 1) 
+(parking-fee 3) 
+(parking-fee 8)
+(parking-fee 5)
+
+; Aufgabe Stromrechnung
+
+(define (elec-bill kwh)
+  (cond ((<= kwh 100) (+(* kwh 0.2)5))
+        ((and (> kwh 100) (< kwh 300)) (+ (* 100 0.2) (* (- kwh 100) 0.3) 5))
+        ((+ (* 100 0.2) (* 200 0.3) (* (- kwh 300) 0.5) 5))))
+
+
+
+(elec-bill 80) 
+(elec-bill 250) 
+(elec-bill 400)
+
+
+
+;Aufgabe von Leetcom Münzen anordnen
+
+(define (münzen eingabe)
+  (iter eingabe 0))
+(define (iter eingabe count)
+  (if(< eingabe 0) 
+        (- count 2)
+      (iter (- eingabe count) (+ count 1))))
+
+
+(münzen 5)
+(münzen 8)
+(münzen 10)
+(münzen 14)
+
+
+
+
+
+
+
+
+

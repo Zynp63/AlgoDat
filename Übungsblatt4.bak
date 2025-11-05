@@ -1,0 +1,65 @@
+#lang racket
+;Übungsblatt-4
+;Aufgabe-1
+
+(define (ganzzahlige-wurzel? n)
+  (if (integer? (sqrt n)) #t #f))
+
+
+(ganzzahlige-wurzel? 25)
+(ganzzahlige-wurzel? 24)
+
+
+;Aufgabe-2
+
+(define (fakt n)
+  (if (even? n)
+      2
+      (let loop ((a (ceiling (sqrt n))))
+                 (let ((b2 (- (* a a) n)))
+                   (if (= (* (floor (sqrt b2)) (floor (sqrt b2))) b2)
+                       (- a(floor (sqrt b2)))
+                       (loop (+ a 1)))))))
+
+(fakt 25)
+(fakt 13)
+(fakt 100)
+(fakt 2183)
+
+
+;Aufgabe 4
+
+(define (kubiksumme n)
+  (iter n 0 ))
+(define (iter n summe)
+  (if (= n 0)
+      (* summe summe summe)
+      (iter (quotient n 10) (+ (remainder n 10) summe))))
+
+(kubiksumme 101042)
+(kubiksumme 34567)
+
+
+;Aufgabe 5
+
+(define (caesar_encrypt n k)
+  (iterr n k 0))
+(define (iterr n k neu)
+  (if (= n 0)
+      (
+      (iter (quotient n 10) k (+ (remainder n 10) k)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+#lang racket
+;Übungblatt7
+;Aufgabe1
+
+(define (loesche liste praedikat)
+  (cond ((null? liste) '())
+        ((praedikat(car liste)) (loesche (cdr liste) praedikat))
+        (else liste)))
+
+
+(loesche (list 4 6 8 3 2 4 5) even?)
+(loesche (list 4 9 8 3 2 4 5) even?)
+
+
+;Aufgabe2
+
+(define (drehe liste)
+  (if (null? liste)
+      liste
+      (drehe ((car liste) liste))))
+
+(drehe (list 1 2 3))

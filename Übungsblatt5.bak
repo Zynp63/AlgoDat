@@ -1,0 +1,43 @@
+#lang racket
+;Übungbaltt 5
+;Aufgabe 1 Lösung1
+#|(define (fakultaet n)
+  (if (= n 0)
+      1
+      (* n (fakultaet (- n 1)))))
+
+(define (euler-n n)
+  (iter n 1))
+(define (iter n neu)
+  (if (= n 0)
+      neu
+      (iter (- n 1) (+ neu (/ 1 (fakultaet n))))))
+
+(euler-n 0)
+(euler-n 1)
+(euler-n 2)
+(euler-n 27.0)|#
+
+;Lösung 2
+
+(define (euler-n n)
+  (define (iter k term sum)  ; k--> su an hangi termi hesapliyoruz(baslangic 0)
+    (if (> k n)              ; term--> o anda elimizdeki terim 1/k!
+        sum                  ; sum--> o ana kadar toplanmis toplam
+        (iter (+ k 1)
+              (/ term (+ k 1))
+              (+ sum term ))))
+  (iter 0 1.0 0.0))
+  
+
+(euler-n 0)
+(euler-n 1)
+(euler-n 2)
+(euler-n 27)
+
+
+
+
+
+
+           

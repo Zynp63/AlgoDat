@@ -1,0 +1,62 @@
+#lang racket
+;Wintersemester 2024/25 Portfolie 2
+;Aufgabe1
+(define (einstellige-quersumme zahl)
+  (iterr zahl 0))
+(define (iterr zahl summe)
+  (if (= zahl 0)
+      summe
+      (iterr (quotient zahl 10) (+ (remainder zahl 10) summe))))
+
+(einstellige-quersumme 123)
+
+(einstellige-quersumme 346)
+
+
+
+;Aufgabe2
+
+(define (vergleich zahl op)
+  (if (< zahl 10)
+      #f
+      (iter zahl 0 op)))
+
+(define (iter zahl count op)
+  (if (< zahl 10)
+      count
+      (let ((a (remainder zahl 10))                ; en sağdaki rakam
+            (b (remainder (quotient zahl 10) 10))) ; onun solundaki rakam
+        (iter (quotient zahl 10)
+              (if (op b a)                         ; sırayla (b, a)
+                  (+ count 1)
+                  count)
+              op))))
+
+(vergleich 112233 <)
+(vergleich 112233 =)
+(vergleich 112233 >)
+
+
+
+
+;Aufgabe2  2.Lösung
+
+(define (vergleichh zahl op)
+  (iterrr zahl 0 op))
+(define (iterrr zahl count op)
+  (if (< zahl 9)
+      count
+      (iterrr (quotient zahl 10) (if (op (remainder (quotient zahl 10) 10) (remainder zahl 10))
+                                   (+ count 1)
+                                   count) op)))
+
+
+
+(vergleich 112233 <)
+(vergleich 112233 =)
+(vergleich 876543 >)
+
+
+
+
+
