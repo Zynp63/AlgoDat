@@ -94,11 +94,97 @@ Hem de fonksiyonun döndürdüğü değer oluyor.|#
 ;Aufgabe 4
 
 (define (maxziffer n)
-  (iter n ))
+  (iter (abs n) 0))
 (define (iter n max)
   (if (= n 0)
       max
-      (iter (quotient n 10) (if (= 
+      (iter (quotient n 10)
+            (if (> max (remainder n 10))
+                max
+                (remainder n 10)))))
+  
+      
+
+(maxziffer 3475376)
+(maxziffer 1012)
+(maxziffer 0) 
+(maxziffer -95840)
+
+
+;Aufgabe 5
+
+#|(define (n x) (+ x 1))----
+
+(define (sum x y)
+  (ite x y ))
+(define (ite x y)
+  (if (= y 0)
+      x
+      (ite (n x) (- y 1))))
+
+(sum 4 6)
+(sum 7 0) |#
+
+
+; Aufgabe 5 -- 2. Lösung
+(define (n x) (+ x 1))
+
+(define (sum x y)
+  (if (= y 0)
+      x
+      (sum (n x) (- y 1))))
+
+(sum 4 6)
+(sum 7 0)
+
+
+
+;Aufgabe 6
+
+
+
+
+;Aufgabe 7   ; Sonra bak
+
+(define (q n)
+  (if (<= n 2)
+      1
+      (+ (q (- n (q (- n 1))))
+         (q (- n (q (- n 2)))))))
+                           
+
+(q 15) 
+(q 16)
+(q 35)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

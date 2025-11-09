@@ -27,29 +27,45 @@
 (fakt 2183)
 
 
+;Aufgabe 3   bu soruyu daha tam yapamadim sonra bak
+
+(define (primzahl? n)
+  (iter n 3 #f))
+(define (iter n teiler a)
+  (if (>= teiler n)
+      a
+  (cond
+    ((< n 2) #f)
+    ((= n 2) #t)
+    ((even? n) #f)
+    (else (iter n (+ teiler 1) (if (= (remainder n teiler) 0)
+                                   #f
+                                   #t))))))
+
+
+(primzahl? 11) 
+(primzahl? 26737) 
+(primzahl? 200) 
+(primzahl? 121)
+  
+                 
+
+
 ;Aufgabe 4
 
-(define (kubiksumme n)
-  (iter n 0 ))
-(define (iter n summe)
-  (if (= n 0)
-      (* summe summe summe)
-      (iter (quotient n 10) (+ (remainder n 10) summe))))
-
-(kubiksumme 101042)
-(kubiksumme 34567)
+c
 
 
 ;Aufgabe 5
 
 (define (caesar_encrypt n k)
-  (iterr n k 0 0))
-(define (iterr n k umdrehen neu)
+  (iterrr n k 0 0))
+(define (iterrr n k umdrehen neu)
   (if (= n 0)
        (if (= umdrehen 0)
            neu
-           (iterr n k (quotient umdrehen 10) (+ (remainder umdrehen 10) (* neu 10))))
-      (iterr (quotient n 10) k (+ (remainder (+ (remainder n 10) k) 10) (* umdrehen 10)) neu)))
+           (iterrr n k (quotient umdrehen 10) (+ (remainder umdrehen 10) (* neu 10))))
+      (iterrr (quotient n 10) k (+ (remainder (+ (remainder n 10) k) 10) (* umdrehen 10)) neu)))
 
 (caesar_encrypt 1234 1)
 (caesar_encrypt 7901 2)
